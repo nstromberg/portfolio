@@ -1,0 +1,32 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "description": "Personal Portfolio for Programming",
+  "dependencies": {
+    "gatsby": "^2.11.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "prettier": "^1.18.2"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "deploy": "gatsby build --prefix-paths",
+    "dev": "gatsby develop"
+  },
+  "keywords": [
+    "typescript",
+    "gatsby",
+    "react",
+    "portfolio",
+    "static",
+    "javascript"
+  ],
+  "author": "Nathan Stromberg",
+  "license": "ISC"
+}
