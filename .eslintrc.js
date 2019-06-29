@@ -1,20 +1,21 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
-    'plugin:react/recommended',
+    'airbnb-typescript-prettier',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
+    'plugin:import/typescript',
     'plugin:prettier/recommended',
   ],
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
   },
   rules: {
-
+    'prettier/prettier': ['error'],
+    '@typescript-eslint/indent': 'off',
   },
   settings: {
     react: {

@@ -3,6 +3,7 @@
   "private": true,
   "description": "Personal Portfolio for Programming",
   "dependencies": {
+    "@babel/core": "^7.4.5",
     "babel-plugin-styled-components": "^1.10.4",
     "classnames": "^2.2.6",
     "gatsby": "^2.11.5",
@@ -42,7 +43,11 @@
     "@typescript-eslint/eslint-plugin": "^1.11.0",
     "@typescript-eslint/parser": "^1.11.0",
     "eslint": "^6.0.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-typescript-prettier": "^1.2.1",
     "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.2",
     "prettier": "^1.18.2"
