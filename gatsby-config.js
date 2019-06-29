@@ -1,5 +1,4 @@
-'use strict';
-
+/* eslint-disable @typescript-eslint/camelcase */
 module.exports = {
   siteMetadata: {
     title: 'Portfolio',
@@ -76,6 +75,13 @@ module.exports = {
         // trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: './src/utils/typography',
+      },
+    },
+    'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
