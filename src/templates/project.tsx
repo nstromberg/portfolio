@@ -13,7 +13,7 @@ interface Props {
   }
 }
 
-const StyledUl = styled('ul')`
+const StyledUl = styled.ul`
   list-style-type: none;
 
   li::before {

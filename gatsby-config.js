@@ -53,12 +53,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-canonical-urls',
-      options: {
-        siteUrl: 'https://nstromberg.github.io/portfolio',
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Nathan Stromberg',
@@ -73,7 +67,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        // trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: 'UA-143074267-1',
       },
     },
     'gatsby-plugin-offline',
