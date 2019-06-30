@@ -55,12 +55,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Nathan Stromberg',
-        short_name: 'nstromberg.github.io',
+        name: "Nathan Stromberg's Programming Portfolio",
+        short_name: 'Portfolio',
         start_url: '/portfolio',
         background_color: '#ffffff',
         theme_color: '#663399',
-        display: 'minimal-ui',
+        display: 'standalone',
         icon: 'static/logo.png',
       },
     },
