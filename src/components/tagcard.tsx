@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+
 interface Props {
   readonly tag: Tag
 }
@@ -51,8 +52,8 @@ export default class ProjectCard extends React.Component<Props> {
             {tag.totalCount} post
             {tag.totalCount === 1 ? '' : 's'}
           </small>
-        </CardBody>>
-    </CardWrapper>
+        </CardBody>
+      </CardWrapper>
     );
   }
 }

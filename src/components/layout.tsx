@@ -45,7 +45,7 @@ export default class Layout extends React.Component<Props> {
               <Link to={`/about`}>About</Link>
             </li>
           </ul>
-        </StyledNav>>
+        </StyledNav>
         <div className='content'>
           {children}
         </div>
@@ -56,7 +56,7 @@ export default class Layout extends React.Component<Props> {
           and
           {' '}
           <a href='https://typescriptlang.org'>Typescript</a>
-        </StyledFooter>>
+        </StyledFooter>
       </>
     )
   }

@@ -8,11 +8,11 @@ type StaticQueryData = {
       social: {
         github: string
       }
+      author: {
+        name: string
+        email: string
+      }
     }
-  }
-  author: {
-    name: string
-    email: string
   }
 }
 
@@ -27,17 +27,17 @@ export default function () {
               social {
                 github
               }
+              author {
+                name
+                email
+              }
             }
-          }
-          author {
-            name
-            email
           }
         }
       `}
       render={(data: StaticQueryData) => {
-        const { description, social } = data.site.siteMetadata;
-        const { email, name } = data.author;
+        const { description, social, author } = data.site.siteMetadata;
+        const { email, name } = author;
         return (
           <div>
             <h1>{description}</h1>

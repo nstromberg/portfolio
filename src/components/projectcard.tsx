@@ -56,8 +56,8 @@ export default class ProjectCard extends React.Component<Props> {
         <CardBody>
           <small>{node.frontmatter.date}</small>
           <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-        </CardBody>>
-    </CardWrapper>
+        </CardBody>
+      </CardWrapper>
     );
   }
 }
