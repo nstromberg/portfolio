@@ -64,12 +64,6 @@ module.exports = {
         icon: 'static/logo.png',
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: 'UA-143074267-1',
-      },
-    },
     'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
