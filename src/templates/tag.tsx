@@ -1,8 +1,10 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
+import React from 'react';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
 
-import Layout from '../components/layout'
-import Head from '../components/head'
+import Layout from '../components/layout';
+import Head from '../components/head';
+import ProjectCard from '../components/projectcard';
 
 interface Props {
   readonly data: PageQueryData
@@ -10,6 +12,15 @@ interface Props {
     tag: string
   }
 }
+
+const StyledGrid = styled.div`
+{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding-bottom: 36px;
+}
+`;
 
 export default class TagTemplate extends React.Component<Props> {
   render() {
@@ -28,20 +39,14 @@ export default class TagTemplate extends React.Component<Props> {
           <header>
             <h1>Projects tagged {tag}</h1>
           </header>
-          <div className={`page-content`}>
+          <StyledGrid>
             {projects.map(({ node }) => {
               const title = node.frontmatter.title || node.fields.slug
               return (
-                <div key={node.fields.slug}>
-                  <h3>
-                    <Link to={node.fields.slug}>{title}</Link>
-                  </h3>
-                  <small>{node.frontmatter.date}</small>
-                  <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-                </div>
+                <ProjectCard node={node} />
               )
             })}
-          </div>
+          </StyledGrid>
         </article>
       </Layout>
     )

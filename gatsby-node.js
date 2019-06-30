@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
-const { createFilePath } = require('gatsby-source-filesystem');
+const {createFilePath} = require('gatsby-source-filesystem');
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = ({graphql, actions}) => {
   return graphql(`
     {
       allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 1000) {
@@ -53,6 +53,7 @@ exports.createPages = ({ graphql, actions }) => {
       }
     });
     const uniqueTags = [...new Set(tags)];
+    console.log(uniqueTags);
 
     // create page for each tag
     uniqueTags.forEach(tag => {
@@ -68,9 +69,9 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({node, actions, getNode}) => {
   if (node.internal.type === 'MarkdownRemark') {
-    const value = createFilePath({ node, getNode });
+    const value = createFilePath({node, getNode});
     actions.createNodeField({
       name: 'slug',
       node,

@@ -46,6 +46,7 @@ export default function () {
               focused on ML/AI and their applications to problem solving in all fields.
               <br />
               <a href={`mailto:${email}`}>Email</a>
+              <br />
               <a href={social.github}>Github</a>
             </p>
           </div>

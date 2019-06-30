@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import Head from '../components/head';
@@ -9,6 +10,15 @@ import ProjectCard from '../components/projectcard';
 interface Props {
   readonly data: PageQueryData
 }
+
+const StyledGrid = styled.div`
+{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding-bottom: 36px;
+}
+`;
 
 export default class Index extends React.Component<Props> {
   render() {
@@ -21,13 +31,13 @@ export default class Index extends React.Component<Props> {
         <Head title="Overview of projects" keywords={['portfolio', 'gatsby', 'javascript', 'react', 'typescript']} />
         <Bio />
         <article>
-          <div className={`page-content`}>
+          <StyledGrid>
             {projects.map(({ node }) => {
               return (
                 <ProjectCard node={node} />
               )
             })}
-          </div>
+          </StyledGrid>
         </article>
       </Layout>
     )

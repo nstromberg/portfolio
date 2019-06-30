@@ -35,6 +35,7 @@ const CardHeading = styled.h1`
 const CardBody = styled.div`
   padding-right: 32px;
   padding-left: 32px;
+  text-align: center;
 `
 
 export default class ProjectCard extends React.Component<Props> {
@@ -44,7 +45,7 @@ export default class ProjectCard extends React.Component<Props> {
       <CardWrapper key={tag.fieldValue} >
         <CardHeading>
           <CardHeader>
-            <Link to={tag.fieldValue}>{tag.fieldValue}</Link>
+            <Link to={`/tags/${tag.fieldValue}`}>{tag.fieldValue}</Link>
           </CardHeader>
         </CardHeading>
         <CardBody>

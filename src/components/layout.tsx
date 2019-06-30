@@ -53,6 +53,7 @@ export default class Layout extends React.Component<Props> {
           Built with
           {' '}
           <a href='https://gatsbyjs.org'>Gatsby</a>
+          {' '}
           and
           {' '}
           <a href='https://typescriptlang.org'>Typescript</a>
