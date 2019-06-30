@@ -53,7 +53,6 @@ exports.createPages = ({graphql, actions}) => {
       }
     });
     const uniqueTags = [...new Set(tags)];
-    console.log(uniqueTags);
 
     // create page for each tag
     uniqueTags.forEach(tag => {

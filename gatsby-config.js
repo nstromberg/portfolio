@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 module.exports = {
+  pathPrefix: '/portfolio',
   siteMetadata: {
     title: 'Portfolio',
     description: 'Personal Programming Portfolio built in Gatsby and Typescript',
@@ -82,5 +83,4 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-transformer-sharp',
   ],
-  pathPrefix: '/portfolio',
 };

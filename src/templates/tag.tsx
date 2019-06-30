@@ -41,7 +41,6 @@ export default class TagTemplate extends React.Component<Props> {
           </header>
           <StyledGrid>
             {projects.map(({ node }) => {
-              const title = node.frontmatter.title || node.fields.slug
               return (
                 <ProjectCard node={node} />
               )
