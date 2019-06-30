@@ -82,4 +82,5 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-transformer-sharp',
   ],
+  pathPrefix: '/portfolio',
 };
