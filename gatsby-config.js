@@ -3,7 +3,7 @@ module.exports = {
   siteMetadata: {
     title: 'Portfolio',
     description: 'Personal Programming Portfolio built in Gatsby and Typescript',
-    siteUrl: 'nstromberg.github.io/portfolio',
+    siteUrl: 'https://nstromberg.github.io/portfolio',
     author: {
       name: 'Nathan Stromberg',
       url: 'nstromberg.github.io',
@@ -73,12 +73,6 @@ module.exports = {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         // trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: './src/utils/typography',
       },
     },
     'gatsby-plugin-offline',

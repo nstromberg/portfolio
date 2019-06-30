@@ -1,5 +1,5 @@
-import path from 'path';
-import {createFilePath} from 'gatsby-source-filesystem';
+const path = require('path');
+const {createFilePath} = require('gatsby-source-filesystem');
 
 exports.createPages = ({graphql, actions}) => {
   return graphql(`
