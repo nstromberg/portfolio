@@ -25,7 +25,7 @@ const useStyles = (theme: Theme) => (
       padding: theme.spacing(8, 0, 6),
     },
     content: {
-      margin: theme.spacing(4),
+      margin: 0,
     },
     grouping: {
       'list-style-type': 'none',
@@ -50,25 +50,18 @@ class Tags extends React.Component<Props> {
               <Divider className={classes.divider} variant='middle' />
             </Typography>
           </Container>
-          <Container className={classes.content}>
-            <ul className={classes.grouping}>
-              <li>
-                <Typography variant='h4' gutterBottom>Education</Typography>
-                <Typography paragraph>
-                  Currently pursuing a Bachelor's of Engineering in Computer Science and Mathematics
-                </Typography>
-              </li>
-              <li>
-                <Typography variant='h4' gutterBottom>Achievements</Typography>
-                <Typography paragraph>
-                  <ul>
-                    <li>National Merit Scholar</li>
-                  </ul>
-                </Typography>
-
-              </li>
-            </ul>
-          </Container>
+          <Box className={classes.content}>
+            <Typography variant='h4' gutterBottom>Education</Typography>
+            <Typography paragraph>
+              Currently pursuing a Bachelor's of Engineering in Computer Science and Mathematics
+            </Typography>
+            <Typography variant='h4' gutterBottom>Achievements</Typography>
+            <Typography paragraph>
+              <ul>
+                <li>National Merit Scholar</li>
+              </ul>
+            </Typography>
+          </Box>
         </Box >
       </Layout >
     )

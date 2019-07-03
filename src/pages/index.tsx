@@ -23,6 +23,7 @@ interface Props {
     heroButtons: string,
     divider: string,
     projects: string,
+    projectCard: string,
   }
 }
 
@@ -41,6 +42,9 @@ const useStyles = (theme: Theme) => (
     projects: {
       margin: theme.spacing(4),
     },
+    projectCard: {
+      maxWidth: 300,
+    }
   })
 )
 
@@ -84,14 +88,14 @@ class Index extends React.Component<Props> {
         <Box className={classes.projects}>
           <Grid
             container
-            direction="row"
-            justify="center"
-            alignItems="flex-start"
+            direction='row'
+            justify='center'
+            alignItems='flex-start'
             spacing={4}
           >
             {projects.map(({ node }) => {
               return (
-                <Grid item>
+                <Grid item className={classes.projectCard}>
                   <ProjectCard node={node} />
                 </Grid>
               )

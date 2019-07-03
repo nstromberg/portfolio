@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box';
 import Link from '../components/link';
 import Layout from '../components/layout';
 import Head from '../components/head';
+import { Container, Divider } from '@material-ui/core';
 
 interface Props {
   readonly data: PageQueryData,
@@ -17,6 +18,8 @@ interface Props {
   readonly classes: {
     content: string,
     date: string,
+    divider: string,
+    title: string,
   }
 }
 
@@ -26,7 +29,13 @@ const useStyles = (theme: Theme) => (
       marginBottom: 12,
     },
     content: {
-      margin: theme.spacing(4)
+
+    },
+    divider: {
+      margin: theme.spacing(2),
+    },
+    title: {
+      padding: theme.spacing(8, 0, 6),
     },
   })
 );
@@ -42,10 +51,13 @@ class ProjectTemplate extends React.Component<Props> {
       <Layout title={siteTitle}>
         <Head title={project.frontmatter.title} description={project.excerpt} />
         <Box>
-          <Typography align='center'>
-            <Typography variant='h4'>{project.frontmatter.title}</Typography>
-            <Typography color='textSecondary' className={classes.date}>{project.frontmatter.date}</Typography>
-          </Typography>
+          <Container maxWidth='sm'>
+            <Typography className={classes.title} variant='h3' align='center'>
+              {project.frontmatter.title}
+              <Divider className={classes.divider} variant='middle' />
+              <Typography color='textSecondary' className={classes.date}>{project.frontmatter.date}</Typography>
+            </Typography>
+          </Container>
           <Box className={classes.content}>
             <Typography gutterBottom className={classes.content} paragraph dangerouslySetInnerHTML={{ __html: project.html }} />
             <Typography gutterBottom align='center' color='textSecondary'>

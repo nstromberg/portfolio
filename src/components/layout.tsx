@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from './link';
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Paper, Typography, Toolbar, AppBar } from '@material-ui/core';
+import { Typography, Toolbar, AppBar, Box } from '@material-ui/core';
 
 interface Props {
   readonly title?: string,
@@ -52,9 +52,9 @@ class Layout extends React.Component<Props> {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Paper className={classes.main}>
+        <Box className={classes.main}>
           {children}
-        </Paper>
+        </Box>
         <Typography variant='body2' color='textSecondary' align='center' className={classes.footer}>
           {'Built with love using '}
           <Link color='inherit' href='https://gatsbyjs.com/'>
