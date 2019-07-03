@@ -1,64 +1,74 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
-
-const StyledNav = styled.nav`
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 16px;
-
-    a {
-      background: none;
-    }
-  }
-`;
-
-const StyledFooter = styled.footer`
-  padding-bottom: 36px;
-`;
+import Link from './link';
+import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { Paper, Typography, Toolbar, AppBar } from '@material-ui/core';
 
 interface Props {
-  readonly title?: string
+  readonly title?: string,
+  readonly classes: {
+    root: string,
+    link: string,
+    name: string,
+    footer: string,
+    main: string,
+  }
 }
 
-export default class Layout extends React.Component<Props> {
+const useStyles = (theme: Theme) => (
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    link: {
+      marginRight: theme.spacing(2),
+    },
+    name: {
+      flexGrow: 1,
+    },
+    footer: {
+      margin: theme.spacing(4),
+    },
+    main: {
+      margin: theme.spacing(4),
+      padding: theme.spacing(4),
+    },
+  })
+);
+
+class Layout extends React.Component<Props> {
   render() {
-    const { children } = this.props;
+    const { children, classes } = this.props;
 
     return (
-      <>
-        <StyledNav className='navigation'>
-          <ul>
-            <li>
-              <Link to={`/`}>&plusmn;</Link>
-            </li>
-            <li>
-              <Link to={`/tags`}>Categories</Link>
-            </li>
-            <li>
-              <Link to={`/about`}>About</Link>
-            </li>
-          </ul>
-        </StyledNav>
-        <div className='content'>
+      <div className={classes.root}>
+        <AppBar position='sticky'>
+          <Toolbar>
+            <Typography variant='h6'>
+              <Link color='inherit' className={classes.link} to={`/`}>&plusmn;</Link>
+              <Link color='inherit' className={classes.link} to={`/tags`}>Categories</Link>
+              <Link color='inherit' className={classes.link} to={`/about`}>About</Link>
+            </Typography>
+            <Typography variant='h6' align='right' className={classes.name}>
+              {'Nathan Stromberg'}
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Paper className={classes.main}>
           {children}
-        </div>
-        <StyledFooter className='footer'>
-          Built with
-          {' '}
-          <a href='https://gatsbyjs.org'>Gatsby</a>
-          {' '}
-          and
-          {' '}
-          <a href='https://typescriptlang.org'>Typescript</a>
-        </StyledFooter>
-      </>
+        </Paper>
+        <Typography variant='body2' color='textSecondary' align='center' className={classes.footer}>
+          {'Built with love using '}
+          <Link color='inherit' href='https://gatsbyjs.com/'>
+            Gatsby
+          </Link>
+          {' and '}
+          <Link color='inherit' href='https://typescriptlang.org/'>
+            Typescript
+          </Link>
+        </Typography>
+      </div>
     )
   }
 }
+
+export default withStyles(useStyles)(Layout);

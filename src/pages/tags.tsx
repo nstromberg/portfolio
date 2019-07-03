@@ -1,6 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
+import Grid from '@material-ui/core/grid';
+import Box from '@material-ui/core/box';
+import { Typography, Divider, Container } from '@material-ui/core';
+import { createStyles, withStyles, Theme } from '@material-ui/core/styles';
 
 import Layout from '../components/layout';
 import Head from '../components/head';
@@ -8,41 +11,62 @@ import TagCard from '../components/tagcard';
 
 interface Props {
   readonly data: PageQueryData
+  readonly classes: {
+    divider: string,
+    title: string,
+  }
 }
 
-const StyledGrid = styled.div`
-{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  padding-bottom: 36px;
-}
-`;
+const useStyles = (theme: Theme) => (
+  createStyles({
+    divider: {
+      margin: theme.spacing(2),
+    },
+    title: {
+      padding: theme.spacing(8, 0, 6),
+    }
+  })
+)
 
-export default class Tags extends React.Component<Props> {
+class Tags extends React.Component<Props> {
   render() {
-    const { data } = this.props
+    const { data, classes } = this.props
     const siteTitle = data.site.siteMetadata.title
     const group = data.allMarkdownRemark.group
 
     return (
       <Layout title={siteTitle}>
         <Head title="All tags" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
-        <article>
-          <h1>All tags</h1>
-          <StyledGrid>
+        <Box>
+          <Container maxWidth='sm'>
+            <Typography className={classes.title} variant='h3' align='center'>
+              All tags
+              <Divider className={classes.divider} variant='middle' />
+            </Typography>
+          </Container>
+          <Grid
+            container
+            direction='row'
+            justify='center'
+            alignItems='flex-start'
+            spacing={4}
+          >
             {group.map(
               tag =>
                 tag && (
-                  <TagCard tag={tag} />
+                  <Grid item>
+                    <TagCard tag={tag} />
+                  </Grid>
                 ),
             )}
-          </StyledGrid>
-        </article>
-      </Layout>
+          </Grid>
+        </Box>
+      </Layout >
     )
   }
 }
+
+export default withStyles(useStyles)(Tags);
 
 interface PageQueryData {
   site: {

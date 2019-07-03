@@ -1,53 +1,120 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
+import {
+  Grid,
+  Box,
+  Theme,
+  withStyles,
+  Typography,
+  Container,
+  Button,
+  Divider,
+} from '@material-ui/core';
+import { createStyles } from '@material-ui/styles';
 
 import Layout from '../components/layout';
 import Head from '../components/head';
-import Bio from '../components/bio';
 import ProjectCard from '../components/projectcard';
 
 interface Props {
   readonly data: PageQueryData
+  readonly classes: {
+    heroContent: string,
+    heroButtons: string,
+    divider: string,
+    projects: string,
+  }
 }
 
-const StyledGrid = styled.div`
-{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  padding-bottom: 36px;
-}
-`;
+const useStyles = (theme: Theme) => (
+  createStyles({
+    heroContent: {
+      backgroundColor: theme.palette.background.paper,
+      padding: theme.spacing(8, 0, 6),
+    },
+    heroButtons: {
+      marginTop: theme.spacing(4),
+    },
+    divider: {
+      margin: theme.spacing(2),
+    },
+    projects: {
+    },
+  })
+)
 
-export default class Index extends React.Component<Props> {
+class Index extends React.Component<Props> {
   render() {
-    const { data } = this.props
+    const { data, classes } = this.props
     const siteTitle = data.site.siteMetadata.title
     const projects = data.allMarkdownRemark.edges
 
     return (
       <Layout title={siteTitle}>
         <Head title="Overview of projects" keywords={['portfolio', 'gatsby', 'javascript', 'react', 'typescript']} />
-        <Bio />
-        <article>
-          <StyledGrid>
+        <div className={classes.heroContent}>
+          <Container maxWidth="sm">
+            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Nathan's Portfolio</Typography>
+            <Divider variant='middle' />
+            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+              <Box my={2}>
+                <Typography paragraph>
+                  {data.site.siteMetadata.author.name} is a Computer Science and Math double major at the University of Kentucky
+                  focused on ML/AI and their applications to problem solving in all fields.
+            </Typography>
+              </Box>
+            </Typography>
+            <div className={classes.heroButtons}>
+              <Grid container spacing={2} justify="center">
+                <Grid item>
+                  <Button variant="contained" color="primary" href={`mailto:${data.site.siteMetadata.author.email}`}>
+                    Email
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button variant="outlined" color="primary" href={data.site.siteMetadata.social.github}>
+                    Github
+                  </Button>
+                </Grid>
+              </Grid>
+            </div>
+          </Container>
+        </div>
+        <Box className={classes.projects}>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="flex-start"
+            spacing={4}
+          >
             {projects.map(({ node }) => {
               return (
-                <ProjectCard node={node} />
+                <Grid item>
+                  <ProjectCard node={node} />
+                </Grid>
               )
             })}
-          </StyledGrid>
-        </article>
+          </Grid>
+        </Box>
       </Layout>
     )
   }
 }
 
+export default withStyles(useStyles)(Index);
+
 interface PageQueryData {
   site: {
     siteMetadata: {
-      title: string
+      title: string,
+      author: {
+        name: string,
+        email: string,
+      },
+      social: {
+        github: string,
+      }
     }
   }
   allMarkdownRemark: {
@@ -71,6 +138,14 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        author {
+          name
+          email
+        }
+        description
+        social {
+          github
+        }
       }
     }
     allMarkdownRemark(

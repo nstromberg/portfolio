@@ -1,9 +1,17 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
+import { createStyles, withStyles, Theme } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+
+import Link from './link';
 
 interface Props {
   readonly tag: Tag
+  readonly classes: {
+    card: string,
+    subHeading: string,
+  }
 }
 
 interface Tag {
@@ -11,51 +19,34 @@ interface Tag {
   totalCount: number
 }
 
-const CardWrapper = styled.div`
-  overflow: hidden;
-  padding: 0 0 32px;
-  margin: 48px auto 0;
-  width: 300px;
-  font-family: sans-serif;
-  box-shadow: 0 0 20px rgba(0, 0, 0, .05), 0 0px 40px rgba(0, 0, 0, .08);
-  border-radius: 5px;
-`
+const useStyles = (theme: Theme) => (
+  createStyles({
+    card: {
+      minWidth: 250,
+    },
+    subHeading: {
+      marginTop: theme.spacing(2),
+    }
+  })
+)
 
-const CardHeader = styled.header`
-  padding-top: 32px;
-  padding-bottom: 32px;
-`
-
-const CardHeading = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-`
-
-const CardBody = styled.div`
-  padding-right: 32px;
-  padding-left: 32px;
-  text-align: center;
-`
-
-export default class ProjectCard extends React.Component<Props> {
+class TagCard extends React.Component<Props> {
   render() {
-    const { tag } = this.props;
+    const { tag, classes } = this.props;
     return (
-      <CardWrapper key={tag.fieldValue} >
-        <CardHeading>
-          <CardHeader>
-            <Link to={`/tags/${tag.fieldValue}`}>{tag.fieldValue}</Link>
-          </CardHeader>
-        </CardHeading>
-        <CardBody>
-          <small>
+      <Card>
+        <CardContent>
+          <Typography variant='h6' component='h2' align='center'>
+            <Link color='inherit' to={`/tags/${tag.fieldValue}`}>{tag.fieldValue}</Link>
+          </Typography>
+          <Typography paragraph className={classes.subHeading} align='center'>
             {tag.totalCount} post
             {tag.totalCount === 1 ? '' : 's'}
-          </small>
-        </CardBody>
-      </CardWrapper>
+          </Typography>
+        </CardContent>
+      </Card>
     );
   }
 }
 
+export default withStyles(useStyles)(TagCard);

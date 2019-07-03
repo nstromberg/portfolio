@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
+import { Box, Typography, Grid } from '@material-ui/core';
 
 import Layout from '../components/layout';
 import Head from '../components/head';
@@ -12,15 +12,6 @@ interface Props {
     tag: string
   }
 }
-
-const StyledGrid = styled.div`
-{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  padding-bottom: 36px;
-}
-`;
 
 export default class TagTemplate extends React.Component<Props> {
   render() {
@@ -35,18 +26,26 @@ export default class TagTemplate extends React.Component<Props> {
           title={'Projects tagged "${tag}"'}
           keywords={['portfolio', 'gatsby', 'typescript', 'react', tag]}
         />
-        <article>
-          <header>
-            <h1>Projects tagged {tag}</h1>
-          </header>
-          <StyledGrid>
+        <Box>
+          <Typography variant='h3'>
+            Projects tagged {tag}
+          </Typography>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="flex-start"
+            spacing={4}
+          >
             {projects.map(({ node }) => {
               return (
-                <ProjectCard node={node} />
+                <Grid item>
+                  <ProjectCard node={node} />
+                </Grid>
               )
             })}
-          </StyledGrid>
-        </article>
+          </Grid>
+        </Box>
       </Layout>
     )
   }
@@ -91,7 +90,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date
+            date(formatString: "MMMM DD, YYYY")
             title
           }
         }
