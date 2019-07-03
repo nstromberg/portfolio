@@ -10,7 +10,7 @@ import {
   Button,
   Divider,
 } from '@material-ui/core';
-import { createStyles } from '@material-ui/styles';
+import { createStyles } from '@material-ui/core/styles';
 
 import Layout from '../components/layout';
 import Head from '../components/head';
@@ -39,6 +39,7 @@ const useStyles = (theme: Theme) => (
       margin: theme.spacing(2),
     },
     projects: {
+      margin: theme.spacing(4),
     },
   })
 )

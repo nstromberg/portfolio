@@ -85,7 +85,7 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
-          excerpt(pruneLength: 2500)
+          excerpt
           fields {
             slug
           }

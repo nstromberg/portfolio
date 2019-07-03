@@ -25,10 +25,12 @@ const useStyles = (theme: Theme) => (
       padding: theme.spacing(8, 0, 6),
     },
     content: {
-
+      margin: theme.spacing(4),
     },
     grouping: {
       'list-style-type': 'none',
+      margin: 0,
+      padding: 0,
     }
   })
 )

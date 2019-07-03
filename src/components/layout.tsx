@@ -30,7 +30,6 @@ const useStyles = (theme: Theme) => (
     },
     main: {
       margin: theme.spacing(4),
-      padding: theme.spacing(4),
     },
   })
 );

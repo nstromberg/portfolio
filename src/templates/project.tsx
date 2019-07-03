@@ -1,8 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
@@ -18,6 +16,7 @@ interface Props {
   },
   readonly classes: {
     content: string,
+    date: string,
   }
 }
 
@@ -27,7 +26,7 @@ const useStyles = (theme: Theme) => (
       marginBottom: 12,
     },
     content: {
-
+      margin: theme.spacing(4)
     },
   })
 );
@@ -48,15 +47,15 @@ class ProjectTemplate extends React.Component<Props> {
             <Typography color='textSecondary' className={classes.date}>{project.frontmatter.date}</Typography>
           </Typography>
           <Box className={classes.content}>
-            <Typography paragraph dangerouslySetInnerHTML={{ __html: project.html }} />
-            <Typography>
+            <Typography gutterBottom className={classes.content} paragraph dangerouslySetInnerHTML={{ __html: project.html }} />
+            <Typography gutterBottom align='center' color='textSecondary'>
               {previous && (
-                <Link to={previous.fields.slug} rel='prev'>
+                <Link color='inherit' to={previous.fields.slug} rel='prev'>
                   ← {previous.frontmatter.title}
                 </Link>
               )}
               {next && (
-                <Link to={next.fields.slug} rel='next'>
+                <Link color='inherit' to={next.fields.slug} rel='next'>
                   {next.frontmatter.title} →
                 </Link>
               )}
